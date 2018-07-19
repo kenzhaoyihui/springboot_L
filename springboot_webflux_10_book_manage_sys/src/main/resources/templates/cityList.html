@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>CityList</title>
+</head>
+<body>
+<div class="contentDiv">
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>City List</strong>
+        </legend>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ProvinceID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="city: ${cityList}">
+            <th scope="row" th:text="${city.id}"></th>
+            <td th:text="${city.provinceId}"></td>
+            <td><a th:href="@{/city/update/{city_id}(city_id=${city.id})}" th:text="${city.cityName}"></a></td>
+            <td th:text="${city.description}"></td>
+            <td><a class="btn btn-danger" th:href="@{/city/delete/{city_id}(city_id=${city.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div><a class="btn btn-primary" href="/city/create" role="button">Add New City</a> </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+1. 先打包， 然后将springboot 应用程序jar包，放到与Dockerfile同一目录下，
+   否则在Dockerfile中的ADD操作， 会默认从/var/lib/docker/tmp/docker-builder12312313/
+   找， 这样是找不到的， 这里是一个坑
